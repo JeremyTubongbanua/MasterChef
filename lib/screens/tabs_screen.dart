@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:masterchef/screens/tabs/community_tab.dart';
 import 'package:masterchef/screens/tabs/recipes_tab.dart';
 import 'package:masterchef/screens/tabs/settings_tab.dart';
+import 'package:masterchef/screens/tabs/your_fridge_tab.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -13,6 +14,11 @@ class _TabsScreenState extends State<TabsScreen> {
 
   final List<Map<String, dynamic>> pages = [
     {
+      'name': 'Your Fridge',
+      'icondata': Icons.food_bank,
+      'tabwidget': YourFridgeTab(),
+    },
+    {
       'name': 'Recipes',
       'icondata': Icons.book,
       'tabwidget': RecipesTab(),
@@ -22,18 +28,18 @@ class _TabsScreenState extends State<TabsScreen> {
       'icondata': Icons.school,
       'tabwidget': CommunityTab(),
     },
-    {
-      'name': 'Settings',
-      'icondata': Icons.settings,
-      'tabwidget': SettingsTab(),
-    },
+    // {
+    //   'name': 'Settings',
+    //   'icondata': Icons.settings,
+    //   'tabwidget': SettingsTab(),
+    // },
   ];
 
   List<BottomNavigationBarItem> getNavBarItems() {
     List<BottomNavigationBarItem> build = [];
     for (int i = 0; i < pages.length; i++) {
       build.add(BottomNavigationBarItem(
-        icon: Icon(pages[i]['icondata']),
+        icon: Icon(pages[i]['icondata'], color: Colors.black),
         label: pages[i]['name'],
         activeIcon: Icon(pages[i]['icondata'], color: Theme.of(context).iconTheme.color),
       ));
@@ -64,6 +70,8 @@ class _TabsScreenState extends State<TabsScreen> {
         elevation: 2,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedLabelStyle: TextStyle(color: Colors.black),
+        fixedColor: Colors.black,
         currentIndex: _currentIndex,
         items: getNavBarItems(),
         onTap: (index) {

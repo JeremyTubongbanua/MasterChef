@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:masterchef/providers/recipes.dart';
+import 'package:masterchef/providers/your_fridge.dart';
 import 'package:masterchef/screens/login_screen.dart';
+import 'package:masterchef/screens/recipe_detail_screen.dart';
 import 'package:masterchef/screens/tabs_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +21,13 @@ void main() {
     ),
     routes: {
       '/': (ctx) => TabsScreen(),
+      RecipeDetailScreen.routeName: (ctx) => RecipeDetailScreen(),
     },
   );
   final MultiProvider providers = MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => Recipes()),
+      ChangeNotifierProvider(create: (_) => YourFridge()),
     ],
     child: app,
   );

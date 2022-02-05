@@ -4,4 +4,6 @@ UoftHacks Submission (February 4-7 2022)
 
 # Packages
 
--   flutter p ub get provider
+-   flutter pub get provider
+-   flutter pub add flutter_rating_bar
+-   flutter pub add flutter_typeahead
