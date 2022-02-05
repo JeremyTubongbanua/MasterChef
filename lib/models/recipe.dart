@@ -4,7 +4,7 @@ class Recipe {
   final String imageUrl;
   final String author;
   final List<int> ratings;
-  final List<Map<String, dynamic>> recipes;
+  final List<Map<String, dynamic>> ingredients;
   /**
    * [
    *  {
@@ -14,7 +14,7 @@ class Recipe {
    * ]
    */
 
-  Recipe(this.name, this.imageUrl, this.author, this.ratings, this.recipes) {
+  Recipe(this.name, this.imageUrl, this.author, this.ratings, this.ingredients) {
     this.id = this.name + DateTime.now().toIso8601String();
   }
 

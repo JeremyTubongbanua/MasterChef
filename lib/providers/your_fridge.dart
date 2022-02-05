@@ -19,4 +19,14 @@ class YourFridge with ChangeNotifier {
       'amount': 1,
     }
   ];
+
+  void addIngredient(String name, double amount) {
+    ingredients.add({'name': name, 'amount': amount});
+    notifyListeners();
+  }
+
+  void removeIngredient(String name) {
+    ingredients.removeWhere((element) => element['name'] == name);
+    notifyListeners();
+  }
 }

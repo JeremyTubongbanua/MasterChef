@@ -46,15 +46,20 @@ class RecipeCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  RatingBarIndicator(
-                    rating: recipe.averageRating,
-                    itemBuilder: (context, index) => const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    itemCount: 5,
-                    itemSize: 10.0,
-                    direction: Axis.horizontal,
+                  Row(
+                    children: [
+                      RatingBarIndicator(
+                        rating: recipe.averageRating,
+                        itemBuilder: (context, index) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        itemCount: 5,
+                        itemSize: 10.0,
+                        direction: Axis.horizontal,
+                      ),
+                      Text(' ${recipe.ratings.length}', style: TextStyle(fontSize: 10)),
+                    ],
                   ),
                 ],
               ),

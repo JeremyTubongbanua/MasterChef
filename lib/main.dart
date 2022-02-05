@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masterchef/providers/recipes.dart';
 import 'package:masterchef/providers/your_fridge.dart';
+import 'package:masterchef/providers/your_recipes.dart';
 import 'package:masterchef/screens/login_screen.dart';
 import 'package:masterchef/screens/recipe_detail_screen.dart';
 import 'package:masterchef/screens/tabs_screen.dart';
@@ -28,6 +29,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => Recipes()),
       ChangeNotifierProvider(create: (_) => YourFridge()),
+      ChangeNotifierProvider(create: (_) => YourRecipes()),
     ],
     child: app,
   );

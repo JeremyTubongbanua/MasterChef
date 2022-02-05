@@ -18,11 +18,11 @@ class Recipes with ChangeNotifier {
     Recipe(
       'Sausages',
       'https://images.pexels.com/photos/8021124/pexels-photo-8021124.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      'Mr Bean',
+      'Josh',
       [5, 4],
       [
         {
-          'name': 'flour',
+          'name': 'Flour',
           'amount': 2,
         }
       ],
@@ -34,7 +34,7 @@ class Recipes with ChangeNotifier {
       [3],
       [
         {
-          'name': 'flour',
+          'name': 'Flour',
           'amount': 2,
         }
       ],
@@ -46,7 +46,7 @@ class Recipes with ChangeNotifier {
       [3],
       [
         {
-          'name': 'flour',
+          'name': 'Flour',
           'amount': 2,
         }
       ],
@@ -58,7 +58,7 @@ class Recipes with ChangeNotifier {
       [3],
       [
         {
-          'name': 'flour',
+          'name': 'Flour',
           'amount': 2,
         }
       ],
@@ -70,7 +70,7 @@ class Recipes with ChangeNotifier {
       [5, 4, 2],
       [
         {
-          'name': 'flour',
+          'name': 'Flour',
           'amount': 2,
         }
       ],
@@ -82,7 +82,7 @@ class Recipes with ChangeNotifier {
       [3, 5],
       [
         {
-          'name': 'flour',
+          'name': 'Flour',
           'amount': 2,
         }
       ],

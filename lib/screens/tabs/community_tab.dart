@@ -27,7 +27,7 @@ class CommunityTab extends StatelessWidget {
                   onTap: () async {
                     // ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Why hello there')));
-                    await Navigator.of(context).pushNamed(RecipeDetailScreen.routeName);
+                    await Navigator.of(context).pushNamed(RecipeDetailScreen.routeName, arguments: recipes[index]);
                   },
                   child: RecipeCard(recipes[index]),
                 );

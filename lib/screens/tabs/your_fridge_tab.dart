@@ -11,7 +11,8 @@ class YourFridgeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController amountController = TextEditingController();
-    final List<Map<String, dynamic>> fridge = Provider.of<YourFridge>(context).ingredients;
+    final YourFridge fridgeContainer = Provider.of<YourFridge>(context);
+    final List<Map<String, dynamic>> fridge = fridgeContainer.ingredients;
 
     return Scaffold(
       body: Column(
@@ -32,7 +33,7 @@ class YourFridgeTab extends StatelessWidget {
                       child: TextField(
                         controller: nameController,
                         keyboardType: TextInputType.name,
-                        decoration: InputDecoration(label: Text('Name')),
+                        decoration: const InputDecoration(label: Text('Name')),
                       ),
                     ),
                   ),
@@ -42,7 +43,7 @@ class YourFridgeTab extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: amountController,
-                        decoration: InputDecoration(label: Text('Amount')),
+                        decoration: const InputDecoration(label: Text('Amount')),
                         keyboardType: TextInputType.name,
                       ),
                     ),
@@ -52,23 +53,25 @@ class YourFridgeTab extends StatelessWidget {
                       right: 10,
                     ),
                     child: IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () {},
+                      icon: const Icon(Icons.add),
+                      onPressed: () {
+                        fridgeContainer.addIngredient(nameController.text, double.parse(amountController.text));
+                      },
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          Divider(
+          const Divider(
             height: 0,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             padding: const EdgeInsets.only(left: 12.0),
-            child: Text(
+            child: const Text(
               'Your Fridge',
               style: TextStyle(
                 fontSize: 24,
