@@ -1,9 +1,9 @@
 # Master Chef
 
-UoftHacks Submission (February 4-6 2022) 
+UoftHacks Submission (February 4-6 2022)  \
 Devpost: https://devpost.com/software/masterchef \
 YouTube video: https://www.youtube.com/watch?v=yTz4LIbChr8&t=115s \
-Demo: https://masterchef-40a59.web.app/#/ \
+Demo: https://masterchef-40a59.web.app \
 
 
 # Packages
