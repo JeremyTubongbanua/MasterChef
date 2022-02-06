@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masterchef/models/recipe.dart';
 import 'package:masterchef/providers/recipes.dart';
+import 'package:masterchef/screens/add_recipe_screen.dart';
 import 'package:masterchef/screens/recipe_detail_screen.dart';
 import 'package:masterchef/widgets/recipe_card.dart';
 import 'package:provider/provider.dart';
@@ -21,8 +22,32 @@ class CommunityTab extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 25, crossAxisSpacing: 25),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                // childAspectRatio: 2 / 1,
+                maxCrossAxisExtent: 400,
+                // mainAxisExtent: 2,
+                // mainAxisSpacing: 25,
+                // crossAxisSpacing: 25,
+              ),
               itemBuilder: (context, index) {
+                if (index == recipes.length) {
+                  return InkWell(
+                    onTap: () async {
+                      await Navigator.of(context).pushNamed(AddRecipeScreen.routeName);
+                    },
+                    child: Card(
+                      elevation: 10,
+                      child: Container(
+                        decoration: BoxDecoration(color: Colors.black54),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.black,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                  );
+                }
                 return InkWell(
                   onTap: () async {
                     // ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -32,10 +57,10 @@ class CommunityTab extends StatelessWidget {
                   child: RecipeCard(recipes[index]),
                 );
               },
-              itemCount: recipes.length,
+              itemCount: recipes.length + 1,
             ),
           ),
-        )
+        ),
       ],
     );
   }

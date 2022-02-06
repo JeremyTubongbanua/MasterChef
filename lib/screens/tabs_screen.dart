@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:masterchef/screens/tabs/community_tab.dart';
 import 'package:masterchef/screens/tabs/recipes_tab.dart';
-import 'package:masterchef/screens/tabs/settings_tab.dart';
 import 'package:masterchef/screens/tabs/your_fridge_tab.dart';
 
 class TabsScreen extends StatefulWidget {
+  static const String routeName = '/tabs';
+
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
@@ -28,11 +29,6 @@ class _TabsScreenState extends State<TabsScreen> {
       'icondata': Icons.school,
       'tabwidget': CommunityTab(),
     },
-    // {
-    //   'name': 'Settings',
-    //   'icondata': Icons.settings,
-    //   'tabwidget': SettingsTab(),
-    // },
   ];
 
   List<BottomNavigationBarItem> getNavBarItems() {
@@ -62,10 +58,49 @@ class _TabsScreenState extends State<TabsScreen> {
         elevation: 0,
       ),
       drawer: Drawer(
-        child: ListView(
-          children: [
-            Text('test1'),
-          ],
+        child: Container(
+          padding: const EdgeInsets.only(top: 50, left: 15, right: 10),
+          decoration: BoxDecoration(color: Color.fromRGBO(255, 36, 0, .5)),
+          child: ListView(
+            children: [
+              Text(
+                'MasterChef',
+                style: TextStyle(fontSize: 36),
+              ),
+              Text(
+                'Developed by Jeremy Tubongbanua',
+                style: TextStyle(fontSize: 12),
+              ),
+              Divider(),
+              InkWell(
+                child: ListTile(
+                  onTap: () async {
+                    await Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
+                  },
+                  leading: Icon(Icons.home),
+                  title: Text(
+                    'Home',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                child: ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text(
+                    'Settings',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         elevation: 2,
       ),

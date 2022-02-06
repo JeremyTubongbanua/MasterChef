@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:masterchef/firebase_options.dart';
 import 'package:masterchef/providers/recipes.dart';
 import 'package:masterchef/providers/your_fridge.dart';
 import 'package:masterchef/providers/your_recipes.dart';
+import 'package:masterchef/screens/add_recipe_screen.dart';
 import 'package:masterchef/screens/login_screen.dart';
 import 'package:masterchef/screens/recipe_detail_screen.dart';
 import 'package:masterchef/screens/tabs_screen.dart';
@@ -21,8 +25,12 @@ void main() {
       ),
     ),
     routes: {
-      '/': (ctx) => TabsScreen(),
+      // '/': (ctx) => AddRecipeScreen(),
+      '/': (ctx) => LoginScreen(),
+      // '/': (ctx) => TabsScreen(),
+      TabsScreen.routeName: (ctx) => TabsScreen(),
       RecipeDetailScreen.routeName: (ctx) => RecipeDetailScreen(),
+      AddRecipeScreen.routeName: (ctx) => AddRecipeScreen(),
     },
   );
   final MultiProvider providers = MultiProvider(
@@ -33,5 +41,6 @@ void main() {
     ],
     child: app,
   );
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(providers);
 }

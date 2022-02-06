@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:masterchef/providers/your_fridge.dart';
 import 'package:masterchef/widgets/ingredient_item.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +11,7 @@ class YourFridgeTab extends StatelessWidget {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController amountController = TextEditingController();
     final YourFridge fridgeContainer = Provider.of<YourFridge>(context);
-    final List<Map<String, dynamic>> fridge = fridgeContainer.ingredients;
+    final List<Map<String, dynamic>> fridge = fridgeContainer.fridge;
 
     return Scaffold(
       body: Column(
@@ -43,7 +42,7 @@ class YourFridgeTab extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         controller: amountController,
-                        decoration: const InputDecoration(label: Text('Amount')),
+                        decoration: const InputDecoration(label: Text('Amount (optional)')),
                         keyboardType: TextInputType.name,
                       ),
                     ),
@@ -55,7 +54,7 @@ class YourFridgeTab extends StatelessWidget {
                     child: IconButton(
                       icon: const Icon(Icons.add),
                       onPressed: () {
-                        fridgeContainer.addIngredient(nameController.text, double.parse(amountController.text));
+                        fridgeContainer.addIngredient(nameController.text, double.parse(amountController.text == '' ? 1.0.toString() : amountController.text));
                       },
                     ),
                   ),
