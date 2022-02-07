@@ -13,7 +13,7 @@ Demo: https://masterchef-40a59.web.app
 # Images
 
 ![Auth Card](https://i.imgur.com/5nNvHAy.jpg)
-![Community Tab](https://i.imgur.com/xzZN7Gh.png)
+![Community Tab](https://i.imgur.com/5iMKO7X.png)
 ![Recipe Detail Screen](https://i.imgur.com/fAHQrgg.png)
 ![Your Fridge Tab](https://i.imgur.com/nkxeRyR.png)
 ![Recipes Tab](https://i.imgur.com/vkDwKad.png)
