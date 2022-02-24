@@ -1,120 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:masterchef/screens/tabs/community_tab.dart';
-import 'package:masterchef/screens/tabs/recipes_tab.dart';
+import 'package:masterchef/screens/tabs/settings_tab.dart';
 import 'package:masterchef/screens/tabs/your_fridge_tab.dart';
 
 class TabsScreen extends StatefulWidget {
-  static const String routeName = '/tabs';
-
   @override
-  State<TabsScreen> createState() => _TabsScreenState();
+  State<StatefulWidget> createState() {
+    return TabsScreenState();
+  }
 }
 
-class _TabsScreenState extends State<TabsScreen> {
-  late int _currentIndex;
-
-  final List<Map<String, dynamic>> pages = [
+class TabsScreenState extends State<TabsScreen> {
+  final List<Map<String, dynamic>> tabs = [
     {
       'name': 'Your Fridge',
-      'icondata': Icons.food_bank,
-      'tabwidget': YourFridgeTab(),
-    },
-    {
-      'name': 'Recipes',
-      'icondata': Icons.book,
-      'tabwidget': RecipesTab(),
+      'icondata': Icons.food_bank_outlined,
+      'tabscreen': YourFridgeTab(),
     },
     {
       'name': 'Community',
       'icondata': Icons.school,
-      'tabwidget': CommunityTab(),
+      'tabscreen': CommunityTab(),
+    },
+    {
+      'name': 'Settings',
+      'icondata': Icons.settings,
+      'tabscreen': SettingsTab(),
     },
   ];
-
-  List<BottomNavigationBarItem> getNavBarItems() {
-    List<BottomNavigationBarItem> build = [];
-    for (int i = 0; i < pages.length; i++) {
-      build.add(BottomNavigationBarItem(
-        icon: Icon(pages[i]['icondata'], color: Colors.black),
-        label: pages[i]['name'],
-        activeIcon: Icon(pages[i]['icondata'], color: Theme.of(context).iconTheme.color),
-      ));
-    }
-    return build;
-  }
+  late int _currentIndex;
 
   @override
   void initState() {
     super.initState();
-    _currentIndex = 2;
+    _currentIndex = 0;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_currentIndex]['tabwidget'],
-      appBar: AppBar(
-        title: Text('MasterChef', style: TextStyle(color: Colors.black)),
-        elevation: 0,
-      ),
-      drawer: Drawer(
-        child: Container(
-          padding: const EdgeInsets.only(top: 50, left: 15, right: 10),
-          decoration: BoxDecoration(color: Color.fromRGBO(255, 36, 0, .5)),
-          child: ListView(
-            children: [
-              Text(
-                'MasterChef',
-                style: TextStyle(fontSize: 36),
-              ),
-              Text(
-                'Developed by Jeremy Tubongbanua',
-                style: TextStyle(fontSize: 12),
-              ),
-              Divider(),
-              InkWell(
-                child: ListTile(
-                  onTap: () async {
-                    await Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
-                  },
-                  leading: Icon(Icons.home),
-                  title: Text(
-                    'Home',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-              InkWell(
-                child: ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text(
-                    'Settings',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        elevation: 2,
-      ),
+      body: tabs[_currentIndex]['tabscreen'],
       bottomNavigationBar: BottomNavigationBar(
-        unselectedLabelStyle: TextStyle(color: Colors.black),
-        fixedColor: Colors.black,
         currentIndex: _currentIndex,
-        items: getNavBarItems(),
+        items: tabs
+            .map((tabInfo) => BottomNavigationBarItem(
+                  label: tabInfo['name'],
+                  icon: Icon(tabInfo['icondata']),
+                ))
+            .toList(),
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
       ),
+      appBar: AppBar(),
     );
   }
 }
