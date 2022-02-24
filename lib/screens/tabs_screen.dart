@@ -28,6 +28,7 @@ class TabsScreenState extends State<TabsScreen> {
       'tabscreen': SettingsTab(),
     },
   ];
+
   late int _currentIndex;
 
   @override
@@ -38,10 +39,21 @@ class TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme cs = Theme.of(context).colorScheme;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: cs.primary,
+        elevation: 0,
+        title: Text(
+          'MasterChef',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       body: tabs[_currentIndex]['tabscreen'],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
+        backgroundColor: cs.primary,
+        selectedItemColor: cs.onPrimary,
         items: tabs
             .map((tabInfo) => BottomNavigationBarItem(
                   label: tabInfo['name'],
@@ -54,7 +66,6 @@ class TabsScreenState extends State<TabsScreen> {
           });
         },
       ),
-      appBar: AppBar(),
     );
   }
 }

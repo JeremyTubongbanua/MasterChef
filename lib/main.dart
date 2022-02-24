@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:masterchef/screens/tabs_screen.dart';
 
 void main() {
-  final ThemeData theme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red, accentColor: Colors.amber),
+  ThemeData theme = ThemeData();
+
+  theme = theme.copyWith(
+    colorScheme: const ColorScheme.light(
+      primary: Color(0xffb8f2e6),
+      onPrimary: Colors.black,
+      secondary: Color(0xffaed9e0),
+      onSecondary: Colors.black,
+      background: Color(0xffebffff),
+      onBackground: Colors.black,
+    ),
+    brightness: Brightness.dark,
     textTheme: TextTheme(
-      headline6: TextStyle(fontFamily: 'Quicksand'),
-      bodyText2: TextStyle(fontFamily: 'Quicksand'),
+      headline6: TextStyle(fontSize: 24, fontFamily: 'Quicksand'), // title
+      bodyText2: TextStyle(fontSize: 12, fontFamily: 'Quicksand'), // body text
     ),
   );
   final MaterialApp app = MaterialApp(
